@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+body{
+    background-image: url("https://media.istockphoto.com/id/1204183155/photo/abstract-blue-backgrounds.jpg?s=612x612&w=0&k=20&c=1HYhLmn6ILA0hZ5D3x-phbMHM8ALGjpYIULbz0qk-8w=");
+    background-size: cover;
+    background-repeat: no-repeat;
+}   
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    line-height: 0px;
+    position: relative;
+    top:200px;
+    right:200px;
+    float: right;
+    width:400px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 10px;
+}
+.main h2{
+    font-family:  "Montserrat", sans-serif;
+    position: relative;
+    color: whitesmoke;
+    top:30px;
+}   
+#text{
+    font-size: 20px;
+    color: aliceblue;
+   margin: 80px 0px 0px 40px;
+    width:300px;
+    height:150px;
+    background-color:rgba(145, 142, 142, 0.432);
+    outline: none;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border:rgba(145, 142, 142, 0.13);
+   
+}
+.main label{
+    margin-top: 20px;
+    color:aliceblue;
+    padding:20px;
+    text-align: center;
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+.main select{
+    width:250px;
+    font-size: 15px;
+    height:30px;
+    margin:30px 0px 0px 70px;
+    border: aliceblue solid 1px;
+    border-radius:8px;
+    outline:none;
+    color: aqua;
+    background-color:rgba(145, 142, 142, 0.13) ;
+}
+.main input{
+    width:200px;
+    margin: 25px 0px 0px 100px;
+    background-color: #00DDEB;
+}
+.main button{
+    
+    align-items: center;
+      background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+      border-radius: 8px;
+      border: 0;
+      box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      font-family: Phantomsans, sans-serif;
+      font-size: 20px;
+      margin: 25px 0px 0px 100px;
+      line-height: 1em;
+      width: 200px;
+      
+      padding: 13px 10px;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      cursor: pointer;
+}
+.cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.main1{
+    color: #FFFFFF;
+    position: relative;
+    top:300px;
+    left:50px;
+  
+}
+.main1 h3{
+    margin-bottom: 50px;
+font-size: 50px;
+line-height: 50px;
+letter-spacing: 7px;
+}
+.main1 p{
+    font-size: 23px;
+    letter-spacing: 4px;
+    line-height: 30px;
+}
+    </style>
+</head>
+    <div class="cont">
+        <div class="main1">
+            <h3>The text-to-speech<br>that's life like than any<br>Out There.</h3>
+            <p>with over 10k+ voices demons,give your persatations and<br>videos and more.We ensure youb get what you are looking<br>for.our AI airms to learn your patters.</p>
+        </div>
+        <div class="main">
+            <h2>Text To Speech</h2>
+            <textarea id="text"></textarea>
+            <label for="voices">Select A Voice</label>
+            <select id="voices"></select>
+            <label for="reate">Select Text Speed</label>
+            <input type="range" min="0" max="1" step="0.1" value="1 " id="rate"/>
+            <button id="speak">Speech</button>
+        </div>    
+    </div>
+    <script>
+        const textarea=document.querySelector("#text")
+        const voicesSelect=document.querySelector("#voices")
+        const rateInput=document.querySelector("#rate")
+        const speakButton=document.querySelector("#speak")
+        const synth=window.speechSynthesis;
+
+
+        let voices=[];
+        
+        function populateVoices(){
+            voices=synth.getVoices();
+            console.log(voices);
+            voicesSelect.innerHTML=voices
+            .map(
+                (voices)=>
+                '<option value="${voice.name}">${voice.name}(${voice.lang})</option>'
+            )
+            .join("");
+        }
+        function speak(){
+            if(synth.speaking){
+                synth.cancel();
+            }
+            if(textarea.value !== ""){
+                const speakText = new SpeechSynthesisUtterance(textarea.value); 
+                speakText.voice- voices.find(
+                    (voice)=>voice.name === voicesSelect.value
+                );
+                speakText.rate=rateInput.value;
+                synth.speak(speakText);
+            }
+        }
+        voicesSelect.addEventListener("change",()=>{
+            speak();
+        });
+        rateInput.addEventListener("input",()=>{
+            speak();
+        });
+        speakButton.addEventListener("click",()=>{
+            speak();
+        });
+    
+        populateVoices();
+        synth.addEventListener("voiceschanged",populateVoices);
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- or -->
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+   <div class="main">
+        <div class="logo">
+            <div>E</div>
+            <p>Learning</p>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><i class='bx bxl-twitter'></i></li>
+                <li><i class='bx bxl-instagram' ></i></li>
+                <li><i class='bx bxl-pinterest'></i></li>
+                <li><i class='bx bxl-facebook'></i></li>
+
+            </ul>   
+        </div>
+        <div class="mail">
+            <p><i class='bx bx-phone'></i></p>
+            <div>
+                <p><span>Call Us</span><br>
+                +91 9394959697</p>
+            </div>
+            <p><i class='bx bx-envelope' ></i></p>
+            <div>
+                <p><span>Email Us</span><br>
+                info3elearnings@gmail.com</p>
+            </div>
+
+        </div>
+   </div>
+   <div class="main2">
+    <div class="smain">
+        <div class="smain1">
+            <h2>Single Platform<br>For All Your<br><span>Learning</span> Needs.</h2>
+        </div>
+        <div class="smain2">
+            <p>A learning system based on formalised teaching but with the help of<br> electronic resources is known as E-learning. While teaching can be based in or<br> out of the classrooms, the use of computers and the Internet forms the major<br> component of E-learning.</p>
+
+        </div>
+        <form>
+            <div class="smain3">'
+                <div class="smain31">
+                    <p><i class='bx bx-search'></i></p>
+                    <input type="text" placeholder="Search any Course">
+                </div>
+                <div class="smain31">
+                    <p><i class='bx bxs-down-arrow'></i></p>
+                    <input type="text" placeholder="Categories">
+                </div>
+                <div class="smain31">
+                    <button type="submit" value="submit">Search Now</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="img">
+        <img src="WhatsApp Image 2024-06-30 at 17.46.04.jpeg">
+    </div>
+   </div>
+   <script src="https://unpkg.com/scrollreveal"></script>
+   <script>
+    const scrollRevealOption ={
+        distance:"50px",
+        origin:"bottom",
+        duration:1000,
+    };
+    ScrollReveal().reveal(".img img",{
+        ...scrollRevealOption,
+        origin:"right",
+    });
+    ScrollReveal().reveal(".smain1 h2",{
+        ...scrollRevealOption,
+        origin:"left",
+        delay:500,
+    });
+    ScrollReveal().reveal(".smain2 p",{
+        ...scrollRevealOption,
+        origin:"left",
+        delay:1000,
+    });
+    ScrollReveal().reveal(".smain3",{
+        ...scrollRevealOption,
+        origin:"bottom",
+        delay:1500,
+    });
+   </script>
+</body>
+</html>
